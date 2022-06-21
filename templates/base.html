@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ACME Uluxe</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<a href="{% url 'index' %}">
+    <h1>Uluxe</h1>
+</a>
+{% block content %}
+
+{% endblock %}
+</body>
+
+</html>
