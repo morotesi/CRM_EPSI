@@ -17,7 +17,7 @@ from mspr import settings
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path
-from bdd.views import index
+from bdd.views.voiture import index
 from django.views.defaults import server_error
 
 

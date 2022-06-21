@@ -1,14 +1,19 @@
 from django.contrib import admin
-# Register your models here.
-from bdd.models import Voiture,Marque,Prix,Client,Role,Employee,EmployeeAdmin,Commande,ClientAdmin,RoleAdmin,CommandeAdmin
 
-admin.site.register(Voiture)
+# Register your models here.
+from bdd.models.Voiture import Voiture
+from bdd.models.Prix import Prix
+from bdd.models.Client import Client
+from bdd.models.Marque import Marque
+from bdd.models.Employee import Employee
+from bdd.models.Commande import Commande
+
+
 admin.site.register(Marque)
 admin.site.register(Prix)
-admin.site.register(Client, ClientAdmin)
-admin.site.register(Role,RoleAdmin)
-admin.site.register(Employee,EmployeeAdmin)
-admin.site.register(Commande,CommandeAdmin)
+admin.site.register(Client)
+admin.site.register(Employee)
+admin.site.register(Commande)
 
 
 
