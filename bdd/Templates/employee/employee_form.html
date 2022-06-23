@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Formulaire d'intégration d'un employée</h3>
+
+<div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {{ employee_form.as_p }}
+
+
+    </div>
+        <button type="submit">modifier</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

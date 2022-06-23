@@ -16,14 +16,11 @@ Including another URLconf
 from mspr import settings
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.urls import path
-from bdd.views.voiture import index
-from django.views.defaults import server_error
+from django.urls import path, include
 
 
 urlpatterns = [
-    path('', index, name="index"),
     path('admin/', admin.site.urls),
-    #path('voiture/<int:id>/', voiture_details, name="voiture")
-
+    path('crm_acme/', include("bdd.urls")),
+    path('accounts/', include("django.contrib.auth.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

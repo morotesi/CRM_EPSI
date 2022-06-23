@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>welcome sur le details de la voiture</h1>
+
+
+<div>
+    <h2>Détails du véhicule {{ voiture.modele }}</h2>
+    <img src="{{voiture.photo.url}}" alt="photo de la voiture : {{ product.marque}}">
+    <p>{{voiture.prix.prix}}</p>
+    <button onclick="add_to_panier()">Inserer dans la commande</button>
+</div>
+<script src="/js/add_to_cart.js"></script>
+{% endblock %}

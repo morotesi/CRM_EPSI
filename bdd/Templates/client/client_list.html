@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Télephone</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for client in client_list %}
+      <tr>
+        <th scope="row"><a href="{% url 'client_detail' client.id %}" class="text-black">{{ client.nom }}</a></th>
+        <td> {{ client.prenom }}</td>
+        <td>{{ client.get_adresse_complete_str }}</td>
+        <td>{{ client.no_tel }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div class="pagination">
+    {% if client_list.has_previous %}
+    <a href=" {% url 'clients' %}?page= {{ client_list.previous_page_number }}">Précédente</a>
+    {% endif %}
+    <span class="current">
+      Page {{ client_list.number }} sur {{ client_list.paginator.num_pages }}
+    </span>
+    {% if client_list.has_next %}
+    <a href=" {% url 'clients' %}?page= {{ client_list.next_page_number }}">Suivante</a>
+    {% endif %}
+  </div>
+  <div class="text-right">
+    <a href=" {% url 'create_client' %}" class="btn btn-info">Ajouter un client</a>
+  </div>
+</div>
+
+{% endblock %}

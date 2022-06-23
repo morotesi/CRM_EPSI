@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+ <div class="col-md-12 col-md-push-1">
+    <h3 class="text-center">Rechercher un véhicule</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <form action="#" method="get" id="searchForm" class="input-group">
+
+                    <div class="input-group-btn search-panel">
+                        <select name="search_param" id="search_param" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <option value="all">All</option>
+                            {% for marque in marques %}
+                            <option value="{{marque.id}}">{{marque.label}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input type="text" class="form-control" name="x" placeholder="Search term...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                           <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </form><!-- end form -->
+            </div><!-- end col-xs-8 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div><!-- end col-md-9 -->
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
+
+           {% for voiture in voitures %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img  height="240" src="{{ voiture.photo.url }}">
+              <title> {{ voiture.id_marque.label }}</title><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+              {{ voiture.modele }}</text>
+            </img>
+
+            <div class="card-body">
+              <p class="card-text"> {{ voiture.annee }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href = '{{ voiture.get_absolute_url }}'">Voir</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">commander</button>
+                </div>
+                <small class="text-muted"> {{ voiture.prix.prix }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+             {% endfor %}
+
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
