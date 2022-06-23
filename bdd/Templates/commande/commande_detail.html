@@ -4,12 +4,28 @@
 <div class="card">
   <div class="card-header">
     Récapitulatif commande
-    <a href="{% url 'update_client' client.id %}" class="close">
-          <p>modifier</p>
-    </a>
   </div>
-
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <strong> Vendeur </strong> : {{ commande.pk_employee.user.last_name }} <br>
+      </div>
+       <div class="col">
+        <strong> Client </strong> : {{ commande.pk_client.nom }} <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <strong> vehicule marque  </strong> : {{ commande.id_voiture.id_marque.label }} <br>
+      </div>
+       <div class="col">
+        <strong> vehicule modele </strong> : {{ commande.id_voiture.modele }} <br>
+      </div>
+    </div>
+  </div>
 </div>
-
+<div class="col">
+      <a href="{% url 'commandes' %}" class="btn btn-secondary">retour</a>
+  </div>
 
 {% endblock %}

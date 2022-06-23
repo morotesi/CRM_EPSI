@@ -42,6 +42,6 @@ urlpatterns = [
     path('commandes/create/<int:pk>', commande.CreateCommande.as_view(), name="create_commande"),
     path('commandes/<int:pk>',
           login_required(DetailView.as_view(model=Commande, template_name="commande/commande_detail.html")),
-         name="commande_detail"),
+         name="update_commande"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

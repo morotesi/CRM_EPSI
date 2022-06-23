@@ -12,9 +12,9 @@
       </tr>
     </thead>
     <tbody>
-    {% for commande in commandes %}
+    {% for commande in commande_list %}
       <tr>
-        <th scope="row"><a href="{% url 'commande_detail' commande.id %}" class="text-black">{{ commande.pk_employee }}</a></th>
+        <th scope="row"><a href="{% url 'update_commande' commande.id %}" class="text-black">{{ commande.pk_employee }}</a></th>
         <td> {{ commande.pk_client.nom }}</td>
         <td>{{ commande.id_voiture.id_marque.label }}</td>
         <td>{{ commande.id_voiture.prix }}</td>
