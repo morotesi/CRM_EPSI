@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    Récapitulatif commande
+    <a href="{% url 'update_client' client.id %}" class="close">
+          <p>modifier</p>
+    </a>
+  </div>
+
+</div>
+
+
+{% endblock %}

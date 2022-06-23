@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Vendeur</th>
+        <th scope="col">Client</th>
+        <th scope="col">Marque</th>
+        <th scope="col">Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for commande in commandes %}
+      <tr>
+        <th scope="row"><a href="{% url 'commande_detail' commande.id %}" class="text-black">{{ commande.pk_employee }}</a></th>
+        <td> {{ commande.pk_client.nom }}</td>
+        <td>{{ commande.id_voiture.id_marque.label }}</td>
+        <td>{{ commande.id_voiture.prix }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div class="pagination">
+    {% if commande_list.has_previous %}
+    <a href=" {% url 'commandes' %}?page= {{ commande_list.previous_page_number }}">Précédente</a>
+    {% endif %}
+    <span class="current">
+      Page {{ commande_list.number }} sur {{ commande_list.paginator.num_pages }}
+    </span>
+    {% if commande_list.has_next %}
+    <a href=" {% url 'commandes' %}?page= {{ commande_list.next_page_number }}">Suivante</a>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

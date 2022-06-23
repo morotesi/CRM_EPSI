@@ -6,7 +6,7 @@ from bdd.models.Employee import Employee
 
 
 class Voiture(models.Model):
-    id_marque = models.ForeignKey(Marque, on_delete=models.CASCADE)
+    id_marque = models.ForeignKey(Marque, on_delete=models.PROTECT)
     modele = models.CharField(max_length=56)
     photo = models.ImageField(upload_to="voitures", blank=True, null=True)
     annee = models.IntegerField()
