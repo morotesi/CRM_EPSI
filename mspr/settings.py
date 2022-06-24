@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-80t-@-c6c%v9xlg8!grz*y^-czftf2waztqt*r($#)*z##5ap8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.2.10', 'web.acme.local', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'mspr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ os.path.join(BASE_DIR, 'templates/')],
+        'DIRS': [ os.path.join(BASE_DIR, 'bdd/Templates/'),os.path.join(BASE_DIR, 'templates/')],
 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -114,7 +114,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "mspr/static")
+    os.path.join(BASE_DIR, "mspr/static"),
+    os.path.join(BASE_DIR, "templates"),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

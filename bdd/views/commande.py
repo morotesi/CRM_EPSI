@@ -44,7 +44,6 @@ class CreateCommande(CreateView, LoginRequiredMixin):
 
 
     def get_success_url(self):
-        employee = request.user
         return reverse_lazy("commande_detail", kwargs={"pk": self.object.id})
 
 

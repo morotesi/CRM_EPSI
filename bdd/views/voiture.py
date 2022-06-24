@@ -2,8 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, render
 from bdd.forms.voiture import VoitureForm
-# Create your views here.
+from django.contrib.auth.models import Permission
 from bdd.models.Voiture import Voiture
+from bdd.models.Employee import Employee
 from bdd.models.Marque import Marque
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
@@ -13,8 +14,9 @@ from django.views.generic import CreateView, UpdateView
 def index(request):
     voitures = Voiture.objects.all()
     marques = Marque.objects.all()
+    user = request.user
 
-    return render(request, 'vitrine/home.html',context={"voitures": voitures, "marques":marques})
+    return render(request, 'vitrine/home.html',context={"voitures": voitures, "marques":marques , "username": user.username})
 
 @login_required
 def voiture_details(request, id):

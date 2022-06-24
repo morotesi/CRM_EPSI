@@ -4,4 +4,5 @@ from django.shortcuts import render
 @login_required
 def home(request):
     selected="home"
-    return render(request, "vitrine/home.html", locals())
+    get_user = request.user.username
+    return render(request, "vitrine/home.html", locals(), context={"user": get_user})
