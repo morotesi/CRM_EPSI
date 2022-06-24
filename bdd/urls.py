@@ -31,11 +31,12 @@ urlpatterns = [
 
     #employee
     path('employee', employee.employee_list, name="employees"),
-    path('employee/create', employee.create_employee, name="create_employee"),
-    path('employee/update/<int:pk>', employee.UpdateEmployee.as_view(), name="update_employee"),
     path('employee/<int:pk>',
           login_required(DetailView.as_view(model=Employee, template_name="employee/employee_details.html")),
-         name="employee_details"),
+         name="UpdateEmployee"),
+    path('employee/create', employee.create_employee, name="create_employee"),
+    path('employee/update/<int:pk>', employee.UpdateEmployee.as_view(), name="update_employee"),
+
 
     #commande
     path('commandes', commande.index, name="commandes"),

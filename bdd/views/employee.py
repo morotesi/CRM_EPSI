@@ -71,10 +71,21 @@ def update_employee(request):
         employee_form = EmployeeForm(instance=request.user.employee)
     return render(request, 'employee/employee_details.html',)
 
+@login_required
+def employee_details(request, pk):
+    employee = get_object_or_404(Employee, pk=pk)
+    user = User.pk(employee.user.pk)
+
+
+    print(user)
+    return render(request, 'employee/employee_details.html', context={"employee": employee})
+
+
+
 class UpdateEmployee(UpdateView, LoginRequiredMixin):
     model = Employee
     form_class = UserEmployeeForm
     template_name = "employee/employee_form.html"
 
     def get_success_url(self):
-        return reverse_lazy("employee_details", kwargs={"pk": self.object.id})
+        return reverse_lazy("employee_details", kwargs={"pk": self.object.user.id})

@@ -14,8 +14,9 @@
     <tbody>
     {% for employee in employee_list %}
       <tr>
-        <th scope="row"><a href="{% url 'employee_details' employee.pk %}" class="text-black">{{ employee.first_name }}</a></th>
-        <td> {{ employee.last_name }}</td>
+        <th scope="row"><a href="{% url 'UpdateEmployee' employee.employee.pk %}" class="text-black">{{ employee.employee.id }}</a></th>
+        <td> {{ employee.employee.user.id }}</td>
+        <td> {{ employee.employee.user.last_name }}</td>
         <td>{{ employee.employee.get_adresse_complete_str }}</td>
         <td>{{ employee.employee.no_tel }}</td>
       </tr>
